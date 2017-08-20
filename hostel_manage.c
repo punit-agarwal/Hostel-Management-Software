@@ -24,6 +24,7 @@ struct {
     struct date dob;
     }add,upd,check,rem,sort;
 
+// *************************************************** ENTER NEW STUDENT'S DATA ************************************************
 void new_entry()
 
 {
@@ -83,6 +84,7 @@ void new_entry()
             goto add_invalid;
         }
 }
+// ***************************************************VIEW EXISTING STUDENT'S DATA ************************************************
 void view_list()
 {
     FILE *view;
@@ -116,6 +118,7 @@ void view_list()
             goto view_list_invalid;
         }
 }
+// ***************************************************EDIT EXISTING STUDENT'S DATA ************************************************
 void edit(void)
 {
     int choice,test=0;
@@ -183,7 +186,7 @@ if(test!=1)
             closer();
         }
 }
-
+// ***************************************************DELETE A STUDENT'S DATA************************************************
 void erase(void)
 {
     FILE *old,*newrec;
@@ -234,7 +237,7 @@ void erase(void)
         }
 
 }
-
+// ***************************************************VIEW A STUDENT'S DATA ************************************************
 void see(void)
 {
     FILE *ptr;
@@ -306,7 +309,7 @@ void see(void)
             }
 
 }
-
+// ********************************************* SORT STUDENT'S BASED ON THEIR HOSTEL ************************************************
 void sorter(void)
 {
     int choice;
@@ -369,7 +372,7 @@ sort_list_invalid:
 
 void closer()
 {
-    printf("\n\n\n\nDeveloped by Punit and Pratibha!");
+    printf("\n\n\n\nDeveloped by Punit Agarwal!");
 }
 
 
