@@ -241,10 +241,8 @@ void erase(void)
 void see(void)
 {
     FILE *ptr;
-    int test=0,rate;
+    int test=0;
     int choice;
-    float time;
-    float intrst;
     ptr=fopen("record.dat","r");
     printf("Do you want to check by\n1.Roll no\n2.Name\nEnter your choice:");
     scanf("%d",&choice);
