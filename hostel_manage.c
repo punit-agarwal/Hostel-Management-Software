@@ -7,8 +7,7 @@ void menu();
 void closer();
 struct date{
     int month,day,year;
-
-    };
+};
 struct {
 
     char name[60];
