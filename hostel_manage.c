@@ -24,7 +24,6 @@ struct {
     struct date dob;
     }add,upd,check,rem,sort;
 
-// *************************************************** ENTER NEW STUDENT'S DATA ************************************************
 void new_entry()
 
 {
@@ -84,7 +83,6 @@ void new_entry()
             goto add_invalid;
         }
 }
-// ***************************************************VIEW EXISTING STUDENT'S DATA ************************************************
 void view_list()
 {
     FILE *view;
@@ -118,7 +116,6 @@ void view_list()
             goto view_list_invalid;
         }
 }
-// ***************************************************EDIT EXISTING STUDENT'S DATA ************************************************
 void edit(void)
 {
     int choice,test=0;
@@ -186,7 +183,7 @@ if(test!=1)
             closer();
         }
 }
-// ***************************************************DELETE A STUDENT'S DATA************************************************
+
 void erase(void)
 {
     FILE *old,*newrec;
@@ -237,12 +234,14 @@ void erase(void)
         }
 
 }
-// ***************************************************VIEW A STUDENT'S DATA ************************************************
+
 void see(void)
 {
     FILE *ptr;
-    int test=0;
+    int test=0,rate;
     int choice;
+    float time;
+    float intrst;
     ptr=fopen("record.dat","r");
     printf("Do you want to check by\n1.Roll no\n2.Name\nEnter your choice:");
     scanf("%d",&choice);
@@ -307,47 +306,61 @@ void see(void)
             }
 
 }
-// ********************************************* SORT STUDENT'S BASED ON THEIR HOSTEL ************************************************
+
 void sorter(void)
 {
     int choice;
     printf("Enter year choice:\n\n\t\t1. BH-1 \n\t\t2. BH-2 \n\t\t3. BH-3 \n\t\t4. GH-1 \n\n");
     scanf("%d",&choice);
     
-    FILE *sort1;
-    sort1=fopen("record.dat","r");
+    FILE *fp, *sort1, *sort2, *sort3, *sort4;
+    fp=fopen("record.dat","r");
     int test=0;
     
-    printf("\nROLL NO.\tROOM NO.\tNAME\n");
-
-    while(fscanf(sort1,"%s %s %d/%d/%d %d %s %d %s %s %d %s %s\n",sort.roll_no, sort.name, &sort.dob.month, &sort.dob.day, &sort.dob.year, &sort.age, sort.city, &sort.phone, sort.mail_id, sort.father_name, &sort.father_phone, sort.room_no, sort.hostel_name)!=EOF)
+    while(fscanf(fp,"%s %s %d/%d/%d %d %s %d %s %s %d %s %s\n",sort.roll_no, sort.name, &sort.dob.month, &sort.dob.day, &sort.dob.year, &sort.age, sort.city, &sort.phone, sort.mail_id, sort.father_name, &sort.father_phone, sort.room_no, sort.hostel_name)!=EOF)
     {       
         if(choice==1 && strcmp(sort.hostel_name,"BH-1")==0)
-        {
+        {  
+           sort1=fopen("sortBH-1.dat","a+");
            printf("\t\tFollowing are students of BH-1 hostel:");
+           printf("\n\tROLL NO.\tROOM NO.\tNAME\n");
            printf("\n\t%8s\t %8s\t %s", sort.roll_no, sort.room_no, sort.name);
            test++;
+           fprintf(sort1, "%s %s %s\n", sort.roll_no, sort.room_no, sort.name);
+           fclose(sort1);
         }
         else if(choice==2 && strcmp(sort.hostel_name,"BH-2")==0)
-        {
+        {  
+           sort2=fopen("sortBH-2.dat","a+");
            printf("\t\tFollowing are students of BH-2 hostel:");
+           printf("\n\tROLL NO.\tROOM NO.\tNAME\n");
            printf("\n\t%8s\t %8s\t %s", sort.roll_no, sort.room_no, sort.name);
            test++;
+           fprintf(sort2, "%s %s %s\n", sort.roll_no, sort.room_no, sort.name);
+           fclose(sort2);
         }
         else if(choice==3 && strcmp(sort.hostel_name,"BH-3")==0)
         {
+           sort3=fopen("sortBH-3.dat","a+");
            printf("\t\tFollowing are students of BH-3 hostel:");
+           printf("\n\tROLL NO.\tROOM NO.\tNAME\n");
            printf("\n\t%8s\t %8s\t %s", sort.roll_no, sort.room_no, sort.name);
            test++;
+           fprintf(sort3, "%s %s %s\n", sort.roll_no, sort.room_no, sort.name);
+           fclose(sort3);
         }
         else if(choice==4 && strcmp(sort.hostel_name,"GH-1")==0)
         {
+           sort4=fopen("sortBH-4.dat","a+");
            printf("\t\tFollowing are students of GH-1 hostel:");
+           printf("\n\tROLL NO.\tROOM NO.\tNAME\n");
            printf("\n\t%8s\t %8s\t %s", sort.roll_no, sort.room_no, sort.name);
            test++;
+           fprintf(sort4, "%s %s %s\n", sort.roll_no, sort.room_no, sort.name);
+           fclose(sort4);
         }
     }
-    fclose(sort1);
+    fclose(fp);
     if (test==0)
         {   
         printf("\nNO RECORDS!!\n");}
@@ -370,7 +383,7 @@ sort_list_invalid:
 
 void closer()
 {
-    printf("\n\n\n\nDeveloped by Punit Agarwal!");
+    printf("\n\n\n\nDeveloped by Punit Agarwal\n\n\n");
 }
 
 
